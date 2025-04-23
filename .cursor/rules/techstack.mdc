@@ -1,0 +1,64 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+You are an expert in Python development with streamlit applications, focusing on creating clean, efficient, and maintainable code.
+
+Key Principles:
+- Write concise, modular Python code following modern best practices
+- Prioritize simplicity and readability over clever optimizations
+- Separate frontend (streamlit) and backend logic into distinct files
+- Use meaningful variable and function names that clearly convey purpose
+- Follow PEP 8 style guidelines consistently
+- Add thoughtful comments explaining "why" not just "what" the code does
+- Implement proper error handling for robustness
+
+Streamlit Development:
+- Use streamlit for all frontend components and user interactions
+- Leverage streamlit's built-in widgets and layout options
+- Structure UI flow logically from top to bottom
+- Implement responsive design patterns for better user experience
+- Use st.cache and st.cache_data for performance optimization when appropriate
+
+LLM Integration:
+- Use Google's Gemini API for LLM capabilities
+- Implement proper API key management and error handling
+- Structure prompts effectively for optimal LLM responses
+- Apply appropriate temperature and other parameters based on use case
+
+Monitoring and Debugging:
+- Integrate Helicone for LLM request tracking and debugging
+- Implement logging for non-LLM operations
+- Use try-except blocks with specific error types
+- Include informative error messages for users and developers
+
+Code Organization:
+- Main app.py for streamlit frontend
+- utils.py or similar for backend logic and helper functions
+- Keep configuration in a separate file or environment variables
+- Maintain clear boundaries between UI and business logic
+
+Dependencies (Minimize):
+- streamlit
+- google-generativeai
+- helicone
+- python-dotenv (for environment variables)
+- Any essential data processing libraries
+
+Performance Considerations:
+- Minimize unnecessary API calls to reduce costs and latency
+- Use asynchronous processing for long-running operations when possible
+- Implement caching strategies for repeated operations
+- Consider session state for maintaining user context
+
+Security Practices:
+- Never hardcode API keys or sensitive information
+- Use environment variables for credentials
+- Validate user inputs before processing
+- Handle sensitive data appropriately
+
+Testing and Maintenance:
+- Write code that's testable even if not implementing formal tests initially
+- Document any non-obvious implementation details
+- Consider future maintenance when designing component interactions

@@ -1,0 +1,96 @@
+# Product Requirements Document
+## Case Chronology Tool v1.0
+
+### 1. Product Overview
+**Product Name:** Case Chronology Tool  
+**Version:** 1.0  
+**Date:** April 21, 2025  
+
+#### 1.1 Product Purpose
+The Case Chronology Tool is designed to help lawyers efficiently organize case information by automatically extracting and arranging key events in chronological order from case documents. This tool aims to reduce the manual effort required in creating case chronologies and provide a structured overview of case events.
+
+#### 1.2 Target Users
+- Legal professionals (attorneys, paralegals, legal assistants)
+- Law firms of all sizes
+- Legal departments in corporations
+
+### 2. Market Problem & Opportunity
+Legal professionals spend significant time manually reviewing case documents to create chronologies of events. This process is:
+- Time-consuming and labor-intensive
+- Prone to human error or oversight
+- Often inconsistent in format and detail
+
+Our tool addresses these challenges by automating the extraction and organization of chronological information from case documents.
+
+### 3. User Stories
+**Primary User Story:**
+"As a lawyer reviewing a case, I want to automatically generate a chronology of events from my case documents so that I can understand the case timeline more efficiently and have a structured reference document for the case."
+
+### 4. Feature Requirements
+
+#### 4.1 Chronology Generation (Core Feature v1.0)
+
+**Input:**
+- Case documents (PDFs, photos)
+- Brief description of the case and specific chronology needs
+
+**Processing Requirements:**
+- Document parsing and text extraction
+- Event and date identification
+- Party identification
+- Chronological ordering of events
+
+**Output:**
+- Markdown table containing:
+  - File name
+  - Date
+  - Event description
+  - Parties involved
+  - AI observations
+  - Document summary (50 words)
+
+#### 4.2 User Interface Requirements
+- File upload functionality for multiple documents
+- Text input field for case description
+- Clear display of the generated chronology table
+- Simple, intuitive design using Streamlit
+- Option to download the chronology as a markdown file
+
+### 5. Technical Requirements
+
+#### 5.1 Backend
+- Programming Language: Python
+- LLM Models:
+  - Gemini 2.5 Flash (for document processing)
+  - Gemini 2.5 Pro (for reasoning and chronology creation)
+- Data Processing: Extract text from PDFs and images
+- Monitoring: Helicone for API monitoring and debugging
+
+#### 5.2 Frontend
+- Framework: Streamlit
+- Simple, user-friendly interface
+- Responsive design
+
+### 6. Success Metrics
+- Time saved compared to manual chronology creation
+- Accuracy of event extraction and chronological ordering
+- User satisfaction with the generated chronologies
+- Feedback on usability and interface
+
+### 7. Future Considerations (Post v1.0)
+- Support for additional document types
+- Enhanced filtering and sorting of chronology entries
+- Customizable templates for chronology formatting
+- Collaboration features for team review
+- Integration with legal case management systems
+
+### 8. Timeline
+- MVP Development: 2-3 weeks
+- Initial Testing: 1 week
+- Refinement: 1 week
+- Launch: End of month
+
+### 9. Constraints & Limitations
+- Limited to text extraction capabilities of current LLMs
+- May have accuracy limitations with poorly scanned documents
+- Initial version focuses solely on chronology creation
