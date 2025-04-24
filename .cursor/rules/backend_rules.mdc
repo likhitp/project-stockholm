@@ -1,0 +1,87 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+You are an expert in **Python, FastAPI, scalable API development**.
+
+### Key Principles
+
+- Write concise, technical responses with accurate examples in both Python.
+- Use **functional and declarative programming patterns**; avoid classes unless absolutely necessary.
+- Prefer **iteration and modularization** over code duplication.
+- Use descriptive variable names with auxiliary verbs (e.g., `is_active`, `has_permission`, `isLoading`, `hasError`).
+- Follow proper **naming conventions**:  
+  - For Python: use lowercase with underscores (e.g., `routers/user_routes.py`).  
+
+### Project Structure
+
+- **Backend**:  
+  - **Language**: Python  
+  - **Data Validation**: Pydantic 2.0
+  - **Dependency Management**: Poetry
+  - **Framework**: FastAPI  
+  - **Code Formatting:** Ruff
+  - **Database**: MySQL
+  - **Directory Structure**:  
+    - `backend/`: main.py
+    - `backend/routers`: all the routes
+    - `backend/utils`: utility/helper functions
+    - `backend/src`: source files
+    - `backend/models`: Pydanctic schemas
+    - `backend/tests/`: Tests  - **Testing Framework:** `pytest` 
+    - Environment Configuration:  
+      - `.env` / `.env.example`: Environment variables  
+  - **Containerization:** `docker`, `docker-compose`
+
+
+
+### Code Style and Structure
+
+**Backend (Python/FastAPI)**:
+
+- Use `def` for pure functions and `async def` for asynchronous operations.
+- **Type Hints**: Use Python type hints for all function signatures. Prefer Pydantic models for input validation.
+- **File Structure**: Follow clear separation with directories for routes, utilities, static content, and models/schemas.
+- **RORO Pattern**: Use the "Receive an Object, Return an Object" pattern.
+- **Error Handling**:  
+  - Handle errors at the beginning of functions with early returns.  
+  - Use guard clauses and avoid deeply nested if statements.  
+  - Implement proper logging and custom error types.
+
+### Performance Optimization
+
+**Backend**:
+
+- **Asynchronous Operations**: Minimize blocking I/O operations using async functions.
+- **Caching**: Implement caching strategies for frequently accessed data using Redis or in-memory stores.
+- **Lazy Loading**: Use lazy loading techniques for large datasets and API responses.
+
+**API Development with FastAPI**:
+
+- **Data Validation:** Use Pydantic models for rigorous request and response data validation.
+- **Dependency Injection:** Effectively use FastAPI's dependency injection for managing dependencies.
+- **Routing:** Define clear and RESTful API routes using FastAPI's `APIRouter`.
+- **Background Tasks:** Utilize FastAPI's `BackgroundTasks`
+- **Security:** Implement robust authentication and authorization (e.g., OAuth 2.0, JWT).
+- **Documentation:** Auto-generate API documentation using FastAPI's OpenAPI support.
+- **Versioning:** Plan for API versioning from the start (e.g., using URL prefixes or headers).
+- **CORS:** Configure Cross-Origin Resource Sharing (CORS) settings correctly.
+
+### Project Conventions
+
+**Backend**:
+
+1. Follow **RESTful API design principles**.
+2. Rely on **FastAPI’s dependency injection system** for managing state and shared resources.
+3. Use **SQLModel 2.0** for ORM features, if applicable.
+4. Ensure **CORS** is properly configured for local development.
+5. No authentication or authorization is required for users to access the platform.
+6. Use '.env' loading with python-dotenv
+
+
+### Testing and Deployment
+
+- Implement **unit tests** for both backend.
+- Use **Docker** and **docker compose** for orchestration in both development and production environments. Avoid using the obsolete `docker-compose` command.
+- Ensure proper input validation, sanitization, and error handling throughout the application.
