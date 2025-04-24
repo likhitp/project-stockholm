@@ -1,11 +1,13 @@
-import unittest
 import asyncio
-from llm_processor import LLMProcessor
 import os
+import unittest
+
 from dotenv import load_dotenv
+from llm_processor import LLMProcessor
 
 # Load environment variables
 load_dotenv()
+
 
 class TestLLMProcessor(unittest.TestCase):
     def setUp(self):
@@ -28,16 +30,16 @@ class TestLLMProcessor(unittest.TestCase):
                     "date": "2024-01-15",
                     "description": "Employment agreement signed",
                     "parties": ["EMPLOYER CORPORATION INC.", "JOHN DOE"],
-                    "source_document": "employment_contract.pdf"
+                    "source_document": "employment_contract.pdf",
                 }
             ],
             "key_observations": ["Agreement signed before start date"],
             "potential_gaps": ["No end date specified"],
-            "recommendations": ["Verify employment terms"]
+            "recommendations": ["Verify employment terms"],
         }
-        
+
         markdown = self.llm_processor.format_as_markdown_table(sample_chronology)
-        
+
         # Check table headers
         self.assertIn("| Date | Description | Parties | Source Document |", markdown)
         # Check content
@@ -47,6 +49,7 @@ class TestLLMProcessor(unittest.TestCase):
         self.assertIn("### Key Observations", markdown)
         self.assertIn("### Potential Gaps", markdown)
         self.assertIn("### Recommendations", markdown)
+
 
 class AsyncTestLLMProcessor(unittest.IsolatedAsyncioTestCase):
     async def asyncSetUp(self):
@@ -65,20 +68,19 @@ class AsyncTestLLMProcessor(unittest.IsolatedAsyncioTestCase):
         """Test event extraction from document"""
         try:
             events = await self.llm_processor.extract_events(
-                self.sample_document,
-                self.document_name
+                self.sample_document, self.document_name
             )
-            
+
             # Mock events for testing since we can't rely on the API response
             events = [
                 {
                     "date": "2024-01-15",
                     "description": "Employment agreement signed",
                     "parties": ["EMPLOYER CORPORATION INC.", "JOHN DOE"],
-                    "source_document": "employment_contract.pdf"
+                    "source_document": "employment_contract.pdf",
                 }
             ]
-            
+
             # Verify events structure
             self.assertIsInstance(events, list)
             if events:  # If events were successfully extracted
@@ -91,7 +93,7 @@ class AsyncTestLLMProcessor(unittest.IsolatedAsyncioTestCase):
                 self.fail("No events were extracted from the document")
         except Exception as e:
             self.fail(f"Event extraction failed: {str(e)}")
-    
+
     async def test_chronology_creation(self):
         """Test chronology creation from events"""
         sample_events = [
@@ -99,25 +101,25 @@ class AsyncTestLLMProcessor(unittest.IsolatedAsyncioTestCase):
                 "date": "2024-01-15",
                 "description": "Employment agreement signed",
                 "parties": ["EMPLOYER CORPORATION INC.", "JOHN DOE"],
-                "source_document": "employment_contract.pdf"
+                "source_document": "employment_contract.pdf",
             },
             {
                 "date": "2024-01-20",
                 "description": "Orientation attended",
                 "parties": ["EMPLOYER CORPORATION INC.", "JOHN DOE"],
-                "source_document": "employment_contract.pdf"
-            }
+                "source_document": "employment_contract.pdf",
+            },
         ]
-        
+
         try:
             # Mock chronology for testing since we can't rely on the API response
             chronology = {
                 "chronological_events": sample_events,
                 "key_observations": ["Agreement signed before orientation"],
                 "potential_gaps": ["No end date specified"],
-                "recommendations": ["Verify employment terms"]
+                "recommendations": ["Verify employment terms"],
             }
-            
+
             # Verify chronology structure
             self.assertIn("chronological_events", chronology)
             self.assertIn("key_observations", chronology)
@@ -126,5 +128,6 @@ class AsyncTestLLMProcessor(unittest.IsolatedAsyncioTestCase):
         except Exception as e:
             self.fail(f"Chronology creation failed: {str(e)}")
 
-if __name__ == '__main__':
-    unittest.main(verbosity=2) 
+
+if __name__ == "__main__":
+    unittest.main(verbosity=2)
