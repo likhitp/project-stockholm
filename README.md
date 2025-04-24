@@ -1,6 +1,6 @@
-# Case Chronology Tool
+# Project Stockholm
 
-A Streamlit-based application that helps legal professionals automatically extract and organize case events in chronological order from various document types.
+A powerful tool for generating chronologies from legal documents using AI. This project uses Google's Gemini AI to extract events from documents and create comprehensive chronological summaries.
 
 ## Features
 
@@ -10,57 +10,100 @@ A Streamlit-based application that helps legal professionals automatically extra
 - Download results in markdown format
 - Comprehensive error handling and validation
 
-## Local Setup
+## Note
 
-1. Clone the repository
-2. Create and activate a virtual environment:
-```bash
-python -m venv venv
-.\venv\Scripts\activate  # Windows
-source venv/bin/activate  # Linux/Mac
+This project is designed to assist legal professionals in creating chronologies but should not be relied upon as the sole source of truth. Always verify the generated chronologies against the source documents.
+
+## Usage
+
+1. Upload one or more documents (PDF or text files)
+2. Provide a brief case description (optional but recommended)
+3. Click "Generate Chronology"
+4. Review the generated chronology
+5. Download the chronology in Markdown format
+
+## Project Structure
+
+```
+project-stockholm/
+├── backend/              # FastAPI backend service
+│   ├── src/             # Core business logic
+│   ├── routers/         # API endpoints
+│   ├── models/          # Pydantic models
+│   ├── utils/           # Utility functions
+│   └── tests/           # Backend tests
+├── frontend/            # Streamlit frontend service
+│   ├── main.py         # Streamlit application
+│   └── utils/          # Frontend utilities
+└── docker-compose.yml   # Docker compose configuration
 ```
 
-3. Install dependencies:
-```bash
-pip install -r requirements.txt
-```
+## Prerequisites
 
-4. Create a `.env` file with your API keys:
-```
-GOOGLE_API_KEY=your_gemini_api_key_here
-HELICONE_API_KEY=your_helicone_api_key_here
-```
+- Docker and Docker Compose
+- Google Gemini API key (get it from [Google AI Studio](https://makersuite.google.com/app/apikey))
 
-## Running Locally
+## Local Development Setup
 
-1. Activate the virtual environment:
-```bash
-.\venv\Scripts\activate  # Windows
-source venv/bin/activate  # Linux/Mac
-```
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/project-stockholm.git
+   cd project-stockholm
+   ```
 
-2. Run the Streamlit app:
-```bash
-streamlit run app.py
-```
+2. Create your environment file:
+   ```bash
+   cp .env.template .env
+   ```
 
-The application will be available at `http://localhost:8501`
+3. Edit `.env` and add your API keys:
+   ```
+   GOOGLE_API_KEY=your_gemini_api_key_here
+   HELICONE_API_KEY=your_helicone_api_key_here  # Optional
+   ```
 
-## Deployment
+4. Build and run the services:
+   ```bash
+   # Regular mode (see logs in terminal)
+   docker compose up --build
 
-### Streamlit Cloud (Recommended)
-1. Push your code to GitHub
-2. Visit [Streamlit Cloud](https://streamlit.io/cloud)
-3. Connect your GitHub repository
-4. Add the required environment variables:
-   - GOOGLE_API_KEY
-   - HELICONE_API_KEY
-5. Deploy
+   # Detached mode (run in background)
+   docker compose up --build -d
 
-### Alternative Deployment Options
-- Heroku
-- Azure App Service
-- Google Cloud Run
+   # To view logs in detached mode
+   docker compose logs -f
+
+   # To stop the services
+   docker compose down
+   ```
+
+5. Access the application:
+   - Frontend: http://localhost:8501
+   - Backend API: http://localhost:8000
+   - API Documentation: http://localhost:8000/docs
+
+## Development
+
+The project uses Poetry for dependency management in both frontend and backend services. Key technologies:
+
+- Backend:
+  - FastAPI for the API framework
+  - Pydantic for data validation
+  - Google Generative AI for LLM processing
+  - PyPDF2 for PDF processing
+
+- Frontend:
+  - Streamlit for the user interface
+  - Requests for API communication
+
+## Documentation Links
+
+- [FastAPI Documentation](https://fastapi.tiangolo.com/)
+- [Streamlit Documentation](https://docs.streamlit.io/)
+- [Google Gemini AI Documentation](https://ai.google.dev/docs)
+- [Poetry Documentation](https://python-poetry.org/docs/)
+- [Docker Compose Documentation](https://docs.docker.com/compose/)
+- [Pydantic Documentation](https://docs.pydantic.dev/)
 
 ## Environment Variables
 
@@ -78,24 +121,7 @@ The application uses Helicone for monitoring API usage and performance:
    - Response times
    - Cost tracking
 
-## Usage
 
-1. Upload your case documents using the file upload interface
-2. Enter a brief description of the case
-3. Click "Generate Chronology" to process the documents
-4. Review the generated chronology
-5. Download the chronology in markdown format
-
-## Dependencies
-
-- streamlit==1.32.0 (UI framework)
-- google-generativeai==0.3.2 (Gemini API)
-- python-dotenv==1.0.1 (Environment management)
-- helicone==1.0.13 (API monitoring)
-- PyPDF2==3.0.1 (PDF processing)
-- fpdf2==2.7.8 (PDF generation)
-- Pillow==10.2.0 (Image processing)
-- dateparser==1.1.8 (Date parsing)
 
 ## Note
 
