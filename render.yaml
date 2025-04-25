@@ -5,7 +5,7 @@ services:
     repo: https://github.com/likhitp/project-stockholm
     dockerfilePath: backend/Dockerfile
     envVars:
-      - fromDotEnv: true
+      - fromGroup: lawyer-env
     plan: free
     autoDeploy: true
     healthCheckPath: /health
@@ -16,6 +16,6 @@ services:
     repo: https://github.com/likhitp/project-stockholm
     dockerfilePath: frontend/Dockerfile
     envVars:
-      - fromDotEnv: true
+      - fromGroup: lawyer-env
     plan: free
     autoDeploy: true
