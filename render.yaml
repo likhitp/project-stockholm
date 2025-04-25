@@ -4,18 +4,26 @@ services:
     env: docker
     repo: https://github.com/likhitp/project-stockholm
     dockerfilePath: backend/Dockerfile
+    buildCommand: docker build -t backend ./backend
     envVars:
       - fromGroup: lawyer-env
     plan: free
     autoDeploy: true
     healthCheckPath: /health
+    buildFilter:
+      paths:
+        - backend/**
 
   - type: web
     name: project-stockholm-frontend
     env: docker
     repo: https://github.com/likhitp/project-stockholm
     dockerfilePath: frontend/Dockerfile
+    buildCommand: docker build -t frontend ./frontend
     envVars:
       - fromGroup: lawyer-env
     plan: free
     autoDeploy: true
+    buildFilter:
+      paths:
+        - frontend/**
