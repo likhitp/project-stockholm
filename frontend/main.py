@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 load_dotenv()
 
 # Constants
-BACKEND_URL = "http://backend:8000/api/v1"  # Using docker-compose service name
+BACKEND_URL = "https://project-stockholm-backend.onrender.com/api/v1"  # Move to configs
 
 
 def process_documents(files: List[Any], case_description: str) -> None:
