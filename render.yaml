@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: project-stockholm-backend
+    env: docker
+    repo: https://github.com/likhitp/project-stockholm
+    dockerfilePath: backend/Dockerfile
+    envVars:
+      - fromDotEnv: true
+    plan: free
+    autoDeploy: true
+    healthCheckPath: /health
+
+  - type: web
+    name: project-stockholm-frontend
+    env: docker
+    repo: https://github.com/likhitp/project-stockholm
+    dockerfilePath: frontend/Dockerfile
+    envVars:
+      - fromDotEnv: true
+    plan: free
+    autoDeploy: true
