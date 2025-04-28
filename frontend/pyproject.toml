@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "project-stockholm-frontend"
+version = "0.1.0"
+description = "Frontend for Project Stockholm"
+authors = ["Your Name <your.email@example.com>"]
+packages = [{include = "utils"}]
+
+[tool.poetry.dependencies]
+python = ">=3.9,<3.9.7 || >3.9.7,<4.0"
+streamlit = "1.32.0"
+requests = "^2.31.0"
+python-dotenv = "1.0.1"
+PyPDF2 = "3.0.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api" 

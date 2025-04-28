@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: project-stockholm-backend
+    runtime: docker
+    repo: https://github.com/likhitp/project-stockholm
+    rootDir: backend
+    dockerfilePath: Dockerfile
+    dockerContext: .
+    envVars:
+      - fromGroup: lawyer-env
+    plan: free
+    autoDeploy: true
+    healthCheckPath: /health
+
+  - type: web
+    name: project-stockholm-frontend
+    runtime: docker
+    repo: https://github.com/likhitp/project-stockholm
+    rootDir: frontend
+    dockerfilePath: Dockerfile
+    dockerContext: .
+    envVars:
+      - fromGroup: lawyer-env
+    plan: free
+    autoDeploy: true

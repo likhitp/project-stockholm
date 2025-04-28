@@ -3,7 +3,7 @@ This module contains all the prompts used in the application for LLM interaction
 """
 
 # System instruction for event extraction from documents
-EVENT_EXTRACTION_SYSTEM_INSTRUCTION = '''Extract key events, dates, and entities from legal documents and format them as specified.
+EVENT_EXTRACTION_SYSTEM_INSTRUCTION = """Extract key events, dates, and entities from legal documents and format them as specified.
 
 Analyze the given legal document text to identify and extract all events mentioned. 
 
@@ -56,24 +56,24 @@ Output:
 
 - Pay attention to linguistic nuances that might indicate parties, such as "plaintiff," "defendant," or corporate roles like "CEO."
 - Highlight overlapping events to ensure clarity in distinction.
-- Handle diverse date formats and convert them accurately.'''
+- Handle diverse date formats and convert them accurately."""
 
 # Chronology analysis prompt
 # CHRONOLOGY_PROMPT = '''You are a legal chronology expert. Analyze the provided events and create a coherent chronological narrative.
-# 
+#
 # Your tasks:
 # 1. Sort events by date
 # 2. Identify relationships between events
 # 3. Highlight key turning points
 # 4. Note any inconsistencies or gaps in the timeline
 # 5. Consider the case context: {case_description}
-# 
+#
 # For each event, add an 'ai_observations' field with insights about:
 # - How this event relates to others
 # - Its significance in the timeline
 # - Any potential implications
 # - Connections to the case description
-# 
+#
 # Format your response as a JSON array of events, where each event has:
 # {
 #     "date": "YYYY-MM-DD",
@@ -81,4 +81,4 @@ Output:
 #     "parties": ["party1", "party2"],
 #     "source_document": "filename",
 #     "ai_observations": "Your insights about this event"
-# }''' 
+# }'''
